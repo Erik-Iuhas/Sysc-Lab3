@@ -1,19 +1,31 @@
 import java.util.Map;
+import java.util.ArrayList;
 
 public class AddressBook {
-    private Map Buddies;
+    private ArrayList<BuddyInfo> myBuddies;
 
-    public void addBuddy(BuddyInfo new_buddy) {
+    public AddressBook(){
+        myBuddies = new ArrayList<>();
+    }
+    public void addBuddy(BuddyInfo aBuddy) {
+        if(aBuddy != null) {
+            myBuddies.add(aBuddy);
+        }
     }
 
-    public void removeBuddy() {
+    public BuddyInfo removeBuddy(int index) {
+        if (index >= 0 && index < myBuddies.size()) {
+            return myBuddies.remove(index);
+        }
+        return null;
     }
 
     public static void main(String[] args){
         BuddyInfo buddy = new BuddyInfo("Tom Holland","Carleton","631");
         AddressBook addressBook = new AddressBook();
+        System.out.println("Why");
         addressBook.addBuddy(buddy);
-        addressBook.removeBuddy();
+        addressBook.removeBuddy(0);
 
     }
 }
